@@ -5,9 +5,9 @@
         border:1px solid grey
     }
 </style>
-<h3 class="m-3 py-2 text-center">Add Teacher</h3>
+<h3 class="m-3 py-2 text-center">Add Course Family</h3>
 <hr>
-<form action="{{route('InsertTeacher')}}" method="post">
+<form action="{{route('InsertCF')}}" method="post">
     @csrf
 <div class="container">
     @if(@session('SuccessMessage'))
@@ -55,28 +55,11 @@
     
     @endif
     <div class="my-3">
-        <b class="">Enter First Name</b>
-        <input type="text" class="w-100 p-1" placeholder="Asad" name="firstname">
+        <b class="">Enter Course Family</b>
+        <input type="text" class="w-100 p-1" placeholder="7062 , DM , SC" name="coursefamily">
     </div>
     <div class="my-3">
-        <b class="">Enter Last Name</b>
-        <input type="text" class="w-100 p-1"
-        placeholder="Khan" name="lastname">
-    </div>
-    <div class="my-3">
-        <b class="">Enter Contact No - Follow the Format <span style="color:red">*</span></b>
-        <input type="number" name="contactno" maxlength="13" class="w-100 p-1" placeholder="03331231234">
-    </div>
-    <div class="my-3">
-        <b class="">Select Timings</b>
-        <select name="timings" class="w-100 p-1">
-            @foreach($st as $s)
-            <option value="{{$s->id}}">{{ \Carbon\Carbon::parse($s->from)->format('h:i A') }} to {{ \Carbon\Carbon::parse($s->to)->format('h:i A') }}</option>
-            @endforeach
-        </select>
-    </div>
-    <div class="my-3">
-        <button class="btn btn-dark w-100" type="submit">Add Teacher</button>
+        <button class="btn btn-dark w-100" type="submit">Add Course Family</button>
     </div>
 </div>
 </form>

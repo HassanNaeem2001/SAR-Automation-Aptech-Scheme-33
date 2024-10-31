@@ -23,7 +23,7 @@
            <nav
             class="navbar navbar-expand-sm navbar-dark bg-dark"
            >
-            <div class="container">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="#">SAR Automate</a>
                 <button
                     class="navbar-toggler d-lg-none"
@@ -44,8 +44,30 @@
                                 <span class="visually-hidden">(current)</span></a
                             >
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li> -->
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="dropdownId"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                >Staff Options</a
+                            >
+                            <div
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownId"
+                            >
+                                <a class="dropdown-item" href="{{route('AddTeacher')}}"
+                                    >Add Teachers</a
+                                >
+                                <a class="dropdown-item" href="{{route('StaffTimings')}}"
+                                    >Add Timings</a
+                                >
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a
@@ -55,17 +77,42 @@
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false"
-                                >Dropdown</a
+                                >Batches</a
                             >
                             <div
                                 class="dropdown-menu"
                                 aria-labelledby="dropdownId"
                             >
-                                <a class="dropdown-item" href="#"
-                                    >Action 1</a
+                                <a class="dropdown-item" href="{{route('AddBatches')}}"
+                                    >Add Batches</a
                                 >
-                                <a class="dropdown-item" href="#"
-                                    >Action 2</a
+                                <a class="dropdown-item" href="{{route('AddCF')}}"
+                                    >Add Course Family</a
+                                >
+                                <a class="dropdown-item" href="{{route('StaffTimings')}}"
+                                    >Add Timings</a
+                                >
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="dropdownId"
+                                data-bs-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                                >Students</a
+                            >
+                            <div
+                                class="dropdown-menu"
+                                aria-labelledby="dropdownId"
+                            >
+                                <a class="dropdown-item" href="{{route('AddBatches')}}"
+                                    >Add Student</a
+                                >
+                                <a class="dropdown-item" href="{{route('StaffTimings')}}"
+                                    >Generate SAR</a
                                 >
                             </div>
                         </li>
