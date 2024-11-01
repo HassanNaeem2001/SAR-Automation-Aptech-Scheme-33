@@ -17,4 +17,4 @@ Route::get('/add_cf',function(){
 return view('add_course');
 })->name('AddCF');
 Route::post('/ins_cf',[StaffController::class,('insert_cf')])->name('InsertCF');
-Route::post('/ins_batch',[StaffController::class,('insert_batch')])->name('InsertBatch');
+Route::post('/add_batch',[StaffController::class,('insert_batch')])->name('AddBatch');

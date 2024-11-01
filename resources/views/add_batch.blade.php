@@ -7,7 +7,7 @@
 </style>
 <h3 class="m-3 py-2 text-center">Add Batch</h3>
 <hr>
-<form action="{{route('InsertBatch')}}" method="post">
+<form action="{{route('AddBatch')}}" method="post">
     @csrf
 <div class="container">
     @if(@session('SuccessMessage'))
@@ -71,9 +71,12 @@
     <b>Select Timings</b>
         <br>
         <select name="timinglist" class="p-1 w-100" id="">
-        @foreach($rec2 as $r2)
-        <option value="{{$r2->id}}">{{$r2->from}} - {{$r2->to}}</option>
-        @endforeach
+        <option value="9-11">9-11</option>
+        <option value="11-1">11-1</option>
+        <option value="1-3">1-3</option>
+        <option value="3-5">3-5</option>
+        <option value="5-7">5-7</option>
+        <option value="7-9">7-9</option>
         </select>
     </div>
     <div class="my-3">

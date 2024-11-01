@@ -61,14 +61,6 @@ class StaffController extends Controller
         $rec3 = CourseCurriculum::get();
         return View('add_batch',compact(['rec1','rec2','rec3']));
     }
-    public function insert_batch(Request $req)
-    {
-        new Batch();
-        $req->batchname;
-        $req->courselist;
-        $req->timinglist;
-        $req->teacherlist;
-    }
     public function insert_cf(Request $req)
     {
        if($req->coursefamily == '')
@@ -84,5 +76,23 @@ class StaffController extends Controller
        }
 
 
+    }
+    public function insert_batch(Request $req)
+    {
+        // if($req->batchname == '' || $req->teacherlist == '' || $req->timinglist == '' || $req->courselist == '')
+        // {
+        $b = new Batch();
+        $b->BatchName = $req->batchname;
+        $b->BatchTeacher = $req->teacherlist;
+        $b->BatchTimings = $req->timinglist;
+        $b->BatchCF = $req->courselist;
+        $b->save();
+        return redirect()->back()->with('SuccessMessage','Batch Inserted');
+        // }
+        // else
+        // {
+        //     return redirect()->back()->with('ErrorMessage','Failed To Insert Batch');
+        // }
+        
     }
 }
