@@ -7,6 +7,7 @@ use App\Models\StaffTimings;
 use App\Models\Teacher;
 use App\Models\Batch;
 use App\Models\CourseCurriculum;
+use Illuminate\Support\Facades\DB;
 class StaffController extends Controller
 {
     public function StaffTimings(Request $req)
@@ -94,5 +95,12 @@ class StaffController extends Controller
         //     return redirect()->back()->with('ErrorMessage','Failed To Insert Batch');
         // }
         
+    }
+    public function get_teachers()
+    {
+        $teacher = DB::table('teachers')
+        ->join('batches', 'teachers.id', '=', 'batches.BatchTeacher')
+        ->get();
+        return view('getteachers',compact('teacher'));
     }
 }

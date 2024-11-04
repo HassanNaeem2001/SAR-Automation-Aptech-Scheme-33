@@ -18,3 +18,4 @@ return view('add_course');
 })->name('AddCF');
 Route::post('/ins_cf',[StaffController::class,('insert_cf')])->name('InsertCF');
 Route::post('/add_batch',[StaffController::class,('insert_batch')])->name('AddBatch');
+Route::get('/get_teachers',[StaffController::class,('get_teachers')])->name('ViewTeachers');

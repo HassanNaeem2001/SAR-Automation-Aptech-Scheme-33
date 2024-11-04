@@ -2,6 +2,8 @@
 <html lang="en">
     <head>
         <title>SAR Automate | Add Teacher</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta
@@ -55,7 +57,7 @@
                                 data-bs-toggle="dropdown"
                                 aria-haspopup="true"
                                 aria-expanded="false"
-                                >Staff Options</a
+                                >Teachers</a
                             >
                             <div
                                 class="dropdown-menu"
@@ -67,6 +69,10 @@
                                 <a class="dropdown-item" href="{{route('StaffTimings')}}"
                                     >Add Timings</a
                                 >
+                                <a class="dropdown-item" href="{{route('ViewTeachers')}}"
+                                    >View Teachers</a
+                                >
+
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -90,7 +96,7 @@
                                     >Add Course Family</a
                                 >
                                 <a class="dropdown-item" href="{{route('StaffTimings')}}"
-                                    >Add Timings</a
+                                    >View Batches</a
                                 >
                             </div>
                         </li>
