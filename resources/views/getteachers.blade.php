@@ -34,9 +34,9 @@
                     <td scope="row">{{$t->lastname}}</td>
                     <td scope="row">{{$t->contactno}}</td>
                     <td scope="row">
-                       <i class="fa fa-trash" style="color:red"></i>
+                       <i class="fa fa-trash" id="deletebtn" data-id="{{$t->id}}" style="color:red"></i>
                        <i class="fa fa-edit" style="color:blue"></i>
-                       <i class="fa fa-eye" data-id="{{$t->id}}" data-name="{{$t->firstname}}" data-lastname="{{$t->lastname}}" data-contact="{{$t->contactno}}" data-timings="{{$t->timings}}" data-joined="{{$t->created_at}}" data-batches="{{$t->BatchName}}" id="btndetails"></i>
+                       <i class="fa fa-eye" data-id="{{$t->id}}" data-name="{{$t->firstname}}" data-lastname="{{$t->lastname}}" data-contact="{{$t->contactno}}" data-timings="{{$t->timings}}" data-joined="{{$t->created_at}}" data-batches="{{$t->BatchNames}}" id="btndetails"></i>
                     </td>
                     
                 </tr>
@@ -95,6 +95,21 @@
             confirmButtonText: 'Close'
             })
         // alert(id)
+    })
+    $('#deletebtn').click(function(){
+        var id = $(this).attr('data-id')
+        $.ajax({
+            url:"DeleteTeacher",
+            type:"POST",
+            data:{
+                "id":id,
+                "_token":"{{ csrf_token() }}"
+            },
+            success:function(data)
+            {
+              location.reload()
+            }
+        })
     })
 </script>
 @endsection

@@ -99,8 +99,45 @@ class StaffController extends Controller
     public function get_teachers()
     {
         $teacher = DB::table('teachers')
-        ->join('batches', 'teachers.id', '=', 'batches.BatchTeacher')
+        ->leftJoin('batches', 'teachers.id', '=', 'batches.BatchTeacher')
+        ->select('teachers.*', DB::raw('GROUP_CONCAT(batches.BatchName) as BatchNames'))
+        ->where('teachers.status', '=', 1) 
+        ->groupBy('teachers.id')
         ->get();
         return view('getteachers',compact('teacher'));
+    }
+    public function deleteteacher(Request $req)
+    {
+        $id = $req->post('id');
+        $t = Teacher::find($id);
+        $t->status=0;
+        $t->save();
+        return response()->json('Teacher De Activated');
+    }
+    public function deletebatch(Request $req)
+    {
+        $id = $req->post('id');
+        $t = Batch::find($id);
+        $t->Batchstatus=0;
+        $t->save();
+        return response()->json('Batch De Activated');
+    }
+    public function getbatches()
+    {
+        $batch = DB::table('batches')
+        ->join('teachers', 'teachers.id', '=', 'batches.BatchTeacher')
+        ->join('course_curricula', 'course_curricula.id', '=', 'batches.BatchCF')
+        ->select(
+            'teachers.*', 
+            'batches.*', 
+            'course_curricula.*',
+            'batches.created_at as batch_start',  // Alias BatchStart to avoid conflict
+            'course_curricula.created_at as course_created_at' // Alias created_at to avoid conflict
+        )
+        ->where('batches.BatchStatus', '=', 1)
+        ->get();
+    
+    return view('getbatches', compact('batch'));
+    
     }
 }

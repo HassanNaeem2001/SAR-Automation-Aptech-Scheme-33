@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('contactno');
             $table->integer('timings');
             $table->foreign('timings')->references('id')->on('staff_timings');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

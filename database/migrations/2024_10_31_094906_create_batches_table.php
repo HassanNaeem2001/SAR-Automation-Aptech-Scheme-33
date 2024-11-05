@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('BatchTimings');
             $table->integer('BatchCF');
             $table->foreign('BatchCF')->references('id')->on('course_curricula');
+            $table->integer('Batchstatus')->default(1);
             $table->timestamps();
         });
     }

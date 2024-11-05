@@ -19,3 +19,6 @@ return view('add_course');
 Route::post('/ins_cf',[StaffController::class,('insert_cf')])->name('InsertCF');
 Route::post('/add_batch',[StaffController::class,('insert_batch')])->name('AddBatch');
 Route::get('/get_teachers',[StaffController::class,('get_teachers')])->name('ViewTeachers');
+Route::post('/DeleteTeacher',[StaffController::class,('deleteteacher')]);
+Route::get('/get_batches',[StaffController::class,('getbatches')])->name('ViewBatches');
+Route::post('/DeleteBatch',[StaffController::class,('deletebatch')]);

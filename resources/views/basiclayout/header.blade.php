@@ -95,7 +95,7 @@
                                 <a class="dropdown-item" href="{{route('AddCF')}}"
                                     >Add Course Family</a
                                 >
-                                <a class="dropdown-item" href="{{route('StaffTimings')}}"
+                                <a class="dropdown-item" href="{{route('ViewBatches')}}"
                                     >View Batches</a
                                 >
                             </div>
