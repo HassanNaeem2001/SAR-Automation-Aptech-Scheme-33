@@ -22,3 +22,5 @@ Route::get('/get_teachers',[StaffController::class,('get_teachers')])->name('Vie
 Route::post('/DeleteTeacher',[StaffController::class,('deleteteacher')]);
 Route::get('/get_batches',[StaffController::class,('getbatches')])->name('ViewBatches');
 Route::post('/DeleteBatch',[StaffController::class,('deletebatch')]);
+Route::get('/skillform',[StaffController::class,('skillpage')])->name('AddSkills');
+Route::post('/InsertSkill',[StaffController::class,('insert_skill')])->name('InsertSkill');

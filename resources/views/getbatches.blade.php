@@ -47,6 +47,7 @@
                         data-lastname="{{$b->lastname}}"
                         data-coursefamily="{{$b->Course_Name}}"
                         data-batchstart="{{$b->batch_start}}"
+                        data-currentskill=""
                         style="color:black"></i>
                     </td>
                 </tr>

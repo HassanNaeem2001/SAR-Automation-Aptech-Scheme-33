@@ -89,6 +89,15 @@
        </select>
     </div>
     <div class="my-3">
+    <b>Select Current Skill</b>
+    <br>
+       <select name="courselist" class="p-1 w-100" id="">
+       @foreach($rec4 as $r4)
+        <option value="{{$r4->id}}">{{$r4->SkillName}}</option>
+        @endforeach
+       </select>
+    </div>
+    <div class="my-3">
         <button class="btn btn-dark w-100" type="submit">Add Batch</button>
     </div>
 </div>

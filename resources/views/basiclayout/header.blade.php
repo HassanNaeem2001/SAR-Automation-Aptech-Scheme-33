@@ -92,6 +92,9 @@
                                 <a class="dropdown-item" href="{{route('AddBatches')}}"
                                     >Add Batches</a
                                 >
+                                <a class="dropdown-item" href="{{route('AddSkills')}}"
+                                    >Add Skills</a
+                                >
                                 <a class="dropdown-item" href="{{route('AddCF')}}"
                                     >Add Course Family</a
                                 >

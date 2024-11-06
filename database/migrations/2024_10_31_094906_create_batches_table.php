@@ -17,6 +17,8 @@ return new class extends Migration
             $table->integer('BatchTeacher');
             $table->foreign('BatchTeacher')->references('id')->on('teachers');
             $table->string('BatchTimings');
+            $table->integer('BatchCurrentSkill');
+            $table->foreign('BatchCurrentSkill')->references('id')->on('skills');
             $table->integer('BatchCF');
             $table->foreign('BatchCF')->references('id')->on('course_curricula');
             $table->integer('Batchstatus')->default(1);

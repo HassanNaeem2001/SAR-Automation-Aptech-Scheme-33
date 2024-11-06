@@ -7,6 +7,7 @@ use App\Models\StaffTimings;
 use App\Models\Teacher;
 use App\Models\Batch;
 use App\Models\CourseCurriculum;
+use App\Models\Skill;
 use Illuminate\Support\Facades\DB;
 class StaffController extends Controller
 {
@@ -60,7 +61,8 @@ class StaffController extends Controller
         $rec1 = Teacher::get();
         $rec2 = StaffTimings::get();
         $rec3 = CourseCurriculum::get();
-        return View('add_batch',compact(['rec1','rec2','rec3']));
+        $rec4 = Skill::get();
+        return View('add_batch',compact(['rec1','rec2','rec3','rec4']));
     }
     public function insert_cf(Request $req)
     {
@@ -87,6 +89,7 @@ class StaffController extends Controller
         $b->BatchTeacher = $req->teacherlist;
         $b->BatchTimings = $req->timinglist;
         $b->BatchCF = $req->courselist;
+        $b->BatchCurrentSkill = $req->skillname;
         $b->save();
         return redirect()->back()->with('SuccessMessage','Batch Inserted');
         // }
@@ -127,10 +130,12 @@ class StaffController extends Controller
         $batch = DB::table('batches')
         ->join('teachers', 'teachers.id', '=', 'batches.BatchTeacher')
         ->join('course_curricula', 'course_curricula.id', '=', 'batches.BatchCF')
+        ->join('skills','course_curricula.id','=','skills.CF')
         ->select(
             'teachers.*', 
             'batches.*', 
             'course_curricula.*',
+            'skills.*',
             'batches.created_at as batch_start',  // Alias BatchStart to avoid conflict
             'course_curricula.created_at as course_created_at' // Alias created_at to avoid conflict
         )
@@ -139,5 +144,27 @@ class StaffController extends Controller
     
     return view('getbatches', compact('batch'));
     
+    }
+    public function skillpage()
+    {
+        $course = CourseCurriculum::get();
+        return View('addskill',compact('course'));
+
+    }
+    public function insert_skill(Request $req)
+    {
+        if($req->skillname == '' || $req->skillfamily == '' || $req->semester == '')
+        {
+            return redirect()->back()->with('ErrorMessage','Skill Could not be Inserted');
+        }
+        else
+        {
+        $sk = new Skill();
+        $sk->SkillName = $req->skillname;
+        $sk->CF = $req->skillfamily;
+        $sk->Semester = $req->semester;
+        $sk->save();
+        return redirect()->back()->with('SuccessMessage','Data has been inserted');
+        }
     }
 }
